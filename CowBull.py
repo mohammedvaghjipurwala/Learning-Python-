@@ -23,8 +23,14 @@ import random
 
 def GenerateRandom():
     RandNum = ""
-    for i in range(0,4):
-        RandNum += str(random.randint(0,9))
+    i = 0
+    while i < 4:
+        digit = str(random.randint(0,9))
+        if digit not in RandNum:
+            RandNum += digit
+            i += 1
+
+        
     return RandNum
 	
 def UserInput():
@@ -40,7 +46,6 @@ def Game():
     cow = 0
     bull = 0
     random_num = GenerateRandom()
-    
     print ("Welcome to the Cows and Bulls Game!")
     while cow != 4:
         cow = 0
