@@ -24,17 +24,26 @@ Convert to (F)ahrenheit or (C)elsius? F
 20 C = 68 F
 '''
 ##############################################################################
-
+import math
 def Cel2Fah(Tc):
     return (9/5)*Tc+32
     
 def Fah2Cel(Tf):
     return (5/9)*(Tf-32)
     
+def WindChillCalc(T,V):
+    return (35.74 + 0.6215 * T - 35.75 * math.pow(V,0.16) + 0.4275 * T * math.pow(V,0.16))
+    
 if __name__ == "__main__":
     print ("Temperature converter \n")
     temperature = int(input("Enter a temperature: "))
     if str(input("Convert to (F)ahrenheit or (C)elsius? ")) == 'F':
-        print (Fah2Cel(temperature))
+        print ("Converted F to C: ",Fah2Cel(temperature))
     else:
-        print (Cel2Fah(temperature))
+        print ("Converted C to F: ",Cel2Fah(temperature))
+        
+    print ("Wind chill calculator\n")
+    
+    temperature = int(input("Enter the temperature(F): "))
+    speed = int(input("Enter the speed(mph): "))
+    print ("Wind Chill: ",WindChillCalc(temperature,speed))
